@@ -1,1 +1,0 @@
-// <type="delete" filePath="src/components/About.jsx">
