@@ -1,10 +1,10 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import Hero from '@/components/Hero';
-import Features from '@/components/Features';
-// About component removed
-import Pricing from '@/components/Pricing';
-import Contact from '@/components/Contact';
+import React from "react";
+import Hero from "../components/Hero.jsx";
+import Features from "../components/Features.jsx";
+import Services from "../components/Services.jsx";
+import Pricing from "../components/Pricing.jsx";
+import Map from "../components/Map.jsx";
+import Footer from "../components/Footer.jsx";
 
 const Home = () => {
   return (
