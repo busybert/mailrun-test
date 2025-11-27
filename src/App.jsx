@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-// FIXED: removed "@/" alias
+/* -----------------------------
+   FIXED — all imports are relative
+------------------------------ */
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import Reviews from "./pages/Reviews.jsx";
@@ -12,23 +14,27 @@ import CancelPage from "./pages/CancelPage.jsx";
 
 import { Toaster } from "./components/ui/toaster.jsx";
 
+/* -----------------------------
+   Component
+------------------------------ */
 function App() {
   const location = useLocation();
 
+  // Smooth scroll for #hash navigation
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        const yOffset = -80;
+      const el = document.getElementById(id);
+      if (el) {
+        const offset = -80;
         const y =
-          element.getBoundingClientRect().top +
+          el.getBoundingClientRect().top +
           window.pageYOffset +
-          yOffset;
-        setTimeout(
-          () => window.scrollTo({ top: y, behavior: "smooth" }),
-          100
-        );
+          offset;
+
+        setTimeout(() => {
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }, 100);
       }
     } else {
       window.scrollTo(0, 0);
@@ -51,6 +57,8 @@ function App() {
           </Routes>
         </AnimatePresence>
       </Layout>
+
+      {/* UI Toast notifications */}
       <Toaster />
     </>
   );
