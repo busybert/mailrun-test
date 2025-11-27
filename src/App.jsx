@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 /* -----------------------------
    FIXED — all imports are relative
 ------------------------------ */
-import Layout from "./components/ui/Layout.jsx";
+import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import Reviews from "./pages/Reviews.jsx";
 import TermsAndConditions from "./pages/TermsAndConditions.jsx";
@@ -25,6 +25,7 @@ function App() {
     if (location.hash) {
       const id = location.hash.replace("#", "");
       const el = document.getElementById(id);
+
       if (el) {
         const offset = -80;
         const y =
