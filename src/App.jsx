@@ -3,9 +3,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 /* -----------------------------
-   FIXED — all imports are relative
+   FIXED — correct Layout path
 ------------------------------ */
-import Layout from "./components/ui/Layout.jsx";
+import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx";
 import Reviews from "./pages/Reviews.jsx";
 import TermsAndConditions from "./pages/TermsAndConditions.jsx";
@@ -20,6 +20,7 @@ import { Toaster } from "./components/ui/toaster.jsx";
 function App() {
   const location = useLocation();
 
+  // Smooth scroll for #hash navigation
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
@@ -48,13 +49,17 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/reviews" element={<Reviews />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
           </Routes>
         </AnimatePresence>
       </Layout>
 
+      {/* UI Toast notifications */}
       <Toaster />
     </>
   );
