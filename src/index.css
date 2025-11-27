@@ -1,9 +1,18 @@
+/* ------------------------------ */
+/* MUST COME FIRST — FONT IMPORT  */
+/* ------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ------------------------------ */
+/* TAILWIND LAYERS (required)     */
+/* ------------------------------ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
+/* ------------------------------ */
+/* GLOBAL STYLES                  */
+/* ------------------------------ */
 body {
   @apply bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white;
   font-family: 'Inter', sans-serif;
@@ -14,6 +23,9 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ------------------------------ */
+/* THEME VARIABLES (Tailwind Base Layer) */
+/* ------------------------------ */
 @layer base {
   :root {
     --background: 222.2 84% 4.9%;
