@@ -3,11 +3,13 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from '@/components/ui/toaster';
 import Layout from '@/components/Layout';
-import Home from '@/pages/Home';
-import Reviews from '@/pages/Reviews';
-import TermsAndConditions from '@/pages/TermsAndConditions';
-import SuccessPage from '@/pages/SuccessPage';
-import CancelPage from '@/pages/CancelPage';
+
+// PAGES (must match the filenames exactly)
+import Home from '@/pages/Home.jsx';
+import Reviews from '@/pages/Reviews.jsx';
+import TermsAndConditions from '@/pages/TermsAndConditions.jsx';
+import SuccessPage from '@/pages/SuccessPage.jsx';
+import CancelPage from '@/pages/CancelPage.jsx';
 
 function App() {
   const location = useLocation();
@@ -16,13 +18,20 @@ function App() {
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const element = document.getElementById(id);
+
       if (element) {
         const yOffset = -80;
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        setTimeout(() => window.scrollTo({ top: y, behavior: 'smooth' }), 100);
+        const y =
+          element.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        setTimeout(() => {
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
       }
     } else {
-        window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     }
   }, [location]);
 
@@ -39,6 +48,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </Layout>
+
       <Toaster />
     </>
   );
