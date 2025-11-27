@@ -1,37 +1,51 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { XCircle } from 'lucide-react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+
+// FIXED: replaced "@/" alias with relative path
+import { Button } from '../components/ui/button.jsx';
+
+import { XCircle } from 'lucide-react';
 
 const CancelPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-16rem)] bg-gradient-to-br from-slate-900 to-slate-800 text-white p-4">
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, type: 'spring', stiffness: 260, damping: 20 }}
-        className="text-center bg-slate-800/50 p-8 rounded-2xl shadow-2xl border border-red-500/30 max-w-lg"
-      >
-        <div className="flex justify-center mb-6">
-          <XCircle className="w-20 h-20 text-red-500" />
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent">
-          Payment Canceled
-        </h1>
-        <p className="text-gray-300 text-lg mb-8">
-          Your order was canceled. You have not been charged.
-        </p>
-        <Link to="/#pricing">
-          <Button 
-            className="bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-3 px-6 rounded-lg text-lg transition-transform transform hover:scale-105"
+    <>
+      <Helmet>
+        <title>Order Canceled - MailRun-Orlando.com</title>
+        <meta
+          name="description"
+          content="Your order has been canceled. No charges were made."
+        />
+      </Helmet>
+
+      <div className="container mx-auto px-4 py-20 flex items-center justify-center min-h-[70vh]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, type: 'spring' }}
+          className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-12 max-w-2xl"
+        >
+          <XCircle className="h-24 w-24 text-red-400 mx-auto mb-6 animate-pulse" />
+
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            Order Canceled
+          </h1>
+
+          <p className="text-xl text-gray-300 mb-8">
+            Your transaction was canceled. You haven't been charged.
+          </p>
+
+          <Button
+            asChild
             size="lg"
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold"
           >
-            Return to Booking
+            <Link to="/">Return Home</Link>
           </Button>
-        </Link>
-      </motion.div>
-    </div>
+        </motion.div>
+      </div>
+    </>
   );
 };
 
