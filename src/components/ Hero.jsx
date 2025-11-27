@@ -1,6 +1,10 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Hero from "../components/Hero.jsx";
+import Features from "../components/Features.jsx";
+import Services from "../components/Services.jsx";
+import Pricing from "../components/Pricing.jsx";
+import Map from "../components/Map.jsx";
+import Footer from "../components/Footer.jsx";
 
 const Hero = () => {
   return (
