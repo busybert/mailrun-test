@@ -1,34 +1,34 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import { Toaster } from '@/components/ui/toaster';
-import Layout from '@/components/Layout';
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
-// PAGES (must match the filenames exactly)
-import Home from '@/pages/Home.jsx';
-import Reviews from '@/pages/Reviews.jsx';
-import TermsAndConditions from '@/pages/TermsAndConditions.jsx';
-import SuccessPage from '@/pages/SuccessPage.jsx';
-import CancelPage from '@/pages/CancelPage.jsx';
+// FIXED: removed "@/" alias
+import Layout from "./components/Layout.jsx";
+import Home from "./pages/Home.jsx";
+import Reviews from "./pages/Reviews.jsx";
+import TermsAndConditions from "./pages/TermsAndConditions.jsx";
+import SuccessPage from "./pages/SuccessPage.jsx";
+import CancelPage from "./pages/CancelPage.jsx";
+
+import { Toaster } from "./components/ui/toaster.jsx";
 
 function App() {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
-      const id = location.hash.replace('#', '');
+      const id = location.hash.replace("#", "");
       const element = document.getElementById(id);
-
       if (element) {
         const yOffset = -80;
         const y =
           element.getBoundingClientRect().top +
           window.pageYOffset +
           yOffset;
-
-        setTimeout(() => {
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }, 100);
+        setTimeout(
+          () => window.scrollTo({ top: y, behavior: "smooth" }),
+          100
+        );
       }
     } else {
       window.scrollTo(0, 0);
@@ -42,13 +42,15 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/reviews" element={<Reviews />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
           </Routes>
         </AnimatePresence>
       </Layout>
-
       <Toaster />
     </>
   );
