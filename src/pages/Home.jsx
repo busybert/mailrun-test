@@ -1,16 +1,12 @@
 import React from "react";
-import Hero from "../components/Hero.jsx";
-import Features from "../components/Features.jsx";
-import Pricing from "../components/Pricing.jsx";
-import Footer from "../components/Footer.jsx";
+import Hero from "../components/ui/Hero.jsx";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <Features />
-      <Pricing />
-      <Footer />
+
+      {/* Add your other homepage components here */}
     </>
   );
 };
