@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: mailrun-test
+    runtime: node
+    region: virginia
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run preview"
+    rootDirectory: "."
+    envVars:
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: VITE_STRIPE_PUBLIC_KEY
+        sync: false
